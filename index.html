@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+
+  
+
+  <div class="cloud">
+    <img src="./sun.png" alt="">
+  </div>
+
+  <!-- Outer loading -->
+
+  <div class="loading d-none">
+    <span><i class="fas fa-spinner fa-3x fa-spin text-white"></i></span>
+  </div>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <div class="navbar-brand d-flex" href="#">
+        <svg class="logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"
+            fill="currentColor"></path>
+        </svg>
+        Weather
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="custom-toggler-icon text-white fs-4"><i class="fas fa-arrows-rotate"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Today</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Forecast</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Maps</a>
+          </li> -->
+          <li class="refresh nav-item">
+            <span><i class="fas fa-arrows-rotate"></i></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="not-found mx-auto d-none w-50 bg-light mt-5 text-center p-4 rounded-4">
+    <h2>Not found city</h2>
+  </div>
+
+  <section class="search-bar">
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <input type="text" class="form-control search-input" placeholder="Search for a city..." />
+        <button class="btn btn-sm btn-outline-light ms-2" id="searchBtn" type="submit">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row" id="rowDisplay">
+
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <section class="forecast mt-5 pt-5">
+    <div class="container">
+
+      <div class="w-50">
+        <div class="row display g-0" id="forecastDisplay">
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
