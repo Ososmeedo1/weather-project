@@ -59,6 +59,7 @@ async function mainFunction(city) {
     getCurrentDegree();
     displayData();
     loadingDisappear();
+    searchBar.value = "";
   }
 
 }
