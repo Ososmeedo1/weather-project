@@ -12,15 +12,10 @@ let refreshButton = document.querySelector('.refresh');
 let data = {}; // main api data (days)
 let hourlyData = {}; // api data (hours)
 let currentData = {} // current day-hour data
-const currentCity = localStorage.getItem('city');
+const currentCity = localStorage.getItem('city') || 'cairo';
 
-if (currentCity) {
-  loadingAppear();
-  mainFunction(currentCity);
-} else {
-  loadingAppear();
-  mainFunction('cairo')
-}
+loadingAppear();
+mainFunction(currentCity)
 
 function loadingAppear() {
   loadingSection.classList.add('d-flex');
@@ -35,6 +30,7 @@ function loadingDisappear() {
 }
 
 searchBtn.addEventListener('click', () => {
+  localStorage.setItem('city', searchBar.value)
   loadingAppear();
   mainFunction(searchBar.value);
 })
@@ -45,6 +41,7 @@ refreshButton.addEventListener('click', () => {
 })
 
 async function mainFunction(city) {
+  localStorage.setItem('city', city);
   notFound.classList.add('d-none');
 
   const { lat, lon } = await getCoordinates(city);
@@ -73,19 +70,21 @@ async function getCoordinates(city) {
   const data = await response.json();
 
   if (!data.length) {
-    const lat = lon = undefined;
-    return { lat, lon };
+    return { lat: undefined, lon: undefined };
   } else {
-    const { lat, lon } = data[0];
-    localStorage.setItem('city', searchBar.value)
+
+    const match = data.find(item =>
+      item.type === "city" || item.class === "place"
+    );
+
+    const location = match || data[0];
+    const { lat, lon } = location;
     return { lat, lon };
   }
 
 }
 
 async function getGeneralWeatherData(lat, lon) {
-
-  localStorage.setItem('city', searchBar.value);
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode,windspeed_10m_max&timezone=auto&forecast_days=5`;
   const response = await fetch(url);
   const data = await response.json();

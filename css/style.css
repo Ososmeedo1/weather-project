@@ -238,3 +238,30 @@ nav {
   }
 }
 
+@media (max-width: 480px) {
+  body {
+    overflow: unset;
+  }
+  
+  /* Search-bar */
+
+  .search-bar {
+    position: static;
+    padding-top: 20px;
+  }
+
+  .cloud {
+    width: 20%;
+    top: 25%;
+  }
+
+  .cloud img {
+    width: 100%;
+  }
+
+  .not-found {
+    width: 90% !important;
+    margin-top: 20px !important;
+  }
+}
+
